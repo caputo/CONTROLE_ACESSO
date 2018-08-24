@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="alert alert-success col-xs-11" ng-show="message.text && message.success" style="margin-left: 2.5%; width: 94.5%" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="message.success = false">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message.text }}
+    </div>
+    <div class="alert alert alert-danger col-xs-11" ng-show="message.text && message.error" style="margin-left: 2.5%; width: 94.5%" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="message.error = false">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message.text }}
+    </div> 
+    <div style="display: inline-flex;width: 100%">
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row">
+        <label for="username" class="col-form-label">Usúario</label>
+        <div ng-class="{'has-error': form1.text1.$error.maxlength}">
+            <input class="form-control" type="text" maxlength="256" ng-model="user.name">
+        </div>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row notpadding">
+        <label class="col-form-label col-xs-4">Legado</label>
+        <switch small class="switch marginSwitch" style="width:65px;" ng-model="user.legacy" on="Sim" off="Não"></switch>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row">
+        <label for="obs">Observação</label>
+        <textarea class="form-control" id="obs" rows="3" maxlength="1024" ng-model="user.obs"></textarea>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row">
+        <label for="desc">Descrição</label>
+        <textarea class="form-control" id="desc" rows="3" maxlength="1024" ng-model="user.desc"></textarea>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row">
+        <div>
+            <span class="col-xs-1" style="padding:0%; float:left">
+                <label class="col-form-label" style="margin-top:7px;">IPs</label>
+            </span>
+            <span style="float:right">
+                <span class="col-xs-8 col-xs-offset-3" style="float:left; padding-right:2%;">
+                    <input class="form-control" type="text" maxlength="16" ng-model="ip">
+                </span>
+                <span class="col-xs-1" style="float:right; padding-left:0%">
+                    <button type="button" class="glyphicon glyphicon-plus buttonAlignTextField btn btn-xs btn-success" ng-click="AddIP(ip)"></button>     
+                </span>
+            </span>
+        </div>
+        <div>
+            <select multiple class="form-control" ng-options="ip for ip in user.ips" ng-model="ipsSelected">
+            </select>
+        </div>    
+        <div class="col-xs-offset-9" style="float:right">
+            <button type="button" class="btn btn-xs btn-danger buttonDelete" ng-click="RemoveIPSelected(ipsSelected)">Excluir</button>     
+        </div>   
+    </div>
+
+    <div class="form-group col-xs-6 col-xs-offset-3 row notpadding">
+        <label class="col-form-label col-xs-4">Ativo</label>
+        <switch small class="switch small marginSwitch"  style="width:65px;" ng-model="user.enabled" on="Sim" off="Não"></switch>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row notpadding">
+        <label class="col-form-label col-xs-4">Autorizar bloqueio</label>
+        <switch small class="switch small marginSwitch" style="width:65px;" ng-model="user.allowBlock" on="Sim" off="Não"></switch>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row notpadding">
+        <label class="col-form-label col-xs-4">Bloqueado</label>
+        <switch small class="switch small marginSwitch" style="width:65px;" ng-model="user.blocked" on="Sim" off="Não"></switch>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row">
+        <label for="limite" class="col-form-label">Limite</label>
+        <div>
+            <input class="form-control" type="number" ng-model="user.limit">
+        </div>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row">
+        <label for="limite" class="col-form-label">Número de requisições</label>
+        <div>
+            <input class="form-control" type="number" ng-model="user.requests">
+        </div>
+    </div>
+    <div class="form-group col-xs-6 col-xs-offset-3 row text-center">
+        <button type="button" class="btn btn-success" ng-click="SaveUser()">Gravar</button>     
+        <button type="button" ui-sref="home" class="btn btn-danger" >Voltar</button>     
+    </div>         
+</div>

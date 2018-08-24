@@ -1,0 +1,9 @@
+{
+    "serverURL": "http://localhost:44091/",
+    "updateServers":[
+    	"http://localhost:44091/",
+    	"http://localhost:44091/"
+    ]
+
+    
+}
